@@ -21,7 +21,7 @@ function imOut = ImSetBorder(imIn, b, v)
     % Create a new image from imIn sizes
     imOut = ones(x+2*b, y+2*b, z, 'uint8');
     % Apply background in it
-    imOut(1:x+2*b, 1:y+2*b, 1:z) = v;
+    imOut(1:x+2*b,1:y+2*b,1:z) = v;
     % Inject image inside
     imOut(1+b:b+y,1+b:b+x, 1:z) = imIn;
     uint8(imOut);

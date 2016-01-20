@@ -20,22 +20,23 @@ function newim = ImPlace(im1, im2, roff, coff)
     x2 = size(im2, 1);
     y2 = size(im2, 2);
     z2 = size(im2, 3);
+    % By default, z is from im1
+    z = z1;
     if (z1 > z2)
         % return template from im1
-        newim = im1(1:x1, 1:y1, 1:z1);
-        % and convert im2
-        newim2 = im2(1:x2, 1:y2) * mean(im2);
-        newim(1+roff:roff+y2, 1+coff:coff+x2) = newim2;
-    elseif (z2 > z1)
-        % return template from im1
-        newim = im1(1:x1, 1:y1, 1:z1);
+        newim = im1(1:x1, 1:y1, 1:z);
         % and convert im2
         newim2 = im2(1:x2, 1:y2);
-        newim(1+roff:roff+y2, 1+coff:coff+x2) = newim2;
-    else
+    elseif (z2 > z1)
+        z = z2;
+        newim2 = im2;
+        % And convert im1
         newim = im1(1:x1, 1:y1);
-        newim(1+roff:roff+y2, 1+coff:coff+x2) = im2;
+        % Redefine missing color dimension with greyscale value
+        newim(1:x1, 1:y1, 2:z) = im1(3);
     end
+    newim(1+roff:roff+y2, 1+coff:coff+x2, 1:z) = greytorgb(newim2);
+    
     uint8(newim);
 end
 
