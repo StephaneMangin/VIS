@@ -30,23 +30,22 @@ imwrite(q3_color, 'results/Q3-color.bmp');
 % ----------
 q4_fullGreyscale = ImPlace(lena, small, 85, 15);
 imwrite(q4_fullGreyscale, 'results/Q4-fullGreyscale.bmp');
+q4_colorToColor = ImPlace(boats, small_color, 85, 15);
+imwrite(q4_colorToColor, 'results/Q4-colorToColor.bmp');
 % Pas de solution pour gérer les différentes configuration, ce n'est pas
 % trivial... Même pour le cas couleur vers couleur. Déçu...
 % Il y a un exemple d'images dans 'results' à un instant t du développement
-%q4_greyscaleToColor = ImPlace(boats, small, 15, 15);
-%imwrite(q4_greyscaleToColor, 'results/Q4-greyscaleTocolor.bmp');
-%q4_colorToGreyscale = ImPlace(lena, small_color, 15, 15);
-%imwrite(q4_colorToGreyscale, 'results/Q4-colorToGreyscale.bmp');
-%q4_colorToColor = ImPlace(boats, small_color, 15, 15);
-%imwrite(q4_colorToColor, 'results/Q4-colorToColor.bmp');
+q4_greyscaleToColor = ImPlace(boats, small, 85, 15);
+imwrite(q4_greyscaleToColor, 'results/Q4-greyscaleTocolor.bmp');
+q4_colorToGreyscale = ImPlace(lena, small_color, 85, 15);
+imwrite(q4_colorToGreyscale, 'results/Q4-colorToGreyscale.bmp');
 
 % Question 5
 % ----------
-imglist = dir('*.bmp');
-fnum = length(imglist);
+imglist = dir(['boucle/' '*.bmp']);
+fnum = length(imglist)
 for i=1:fnum
-    imglist(i:name)
-    image = imread(imglist(i));
+    image = imread(['boucle/' imglist(i).name]);
     q5 = ImPad(image, 15);
-    imwrite(q5, 'results/' + imglist(i));
+    imwrite(q5, ['boucle/results/' imglist(i).name]);
 end
