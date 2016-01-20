@@ -1,3 +1,5 @@
+% TP2 MANGIN BARDOU
+% -------------------
 lena = imread('images/lena.pgm');
 small = imread('images/small.bmp');
 small_color = imread('images/small-color.bmp');
@@ -32,9 +34,9 @@ q4_fullGreyscale = ImPlace(lena, small, 85, 15);
 imwrite(q4_fullGreyscale, 'results/Q4-fullGreyscale.bmp');
 q4_colorToColor = ImPlace(boats, small_color, 85, 15);
 imwrite(q4_colorToColor, 'results/Q4-colorToColor.bmp');
-% Pas de solution pour gérer les différentes configuration, ce n'est pas
-% trivial... Même pour le cas couleur vers couleur. Déçu...
-% Il y a un exemple d'images dans 'results' à un instant t du développement
+% Pas de solution pour gérer les images hétérogènes, ce n'est pas
+% trivial... Du coup, conversion vers grayscale si une des images en est.
+% Déçu...
 q4_greyscaleToColor = ImPlace(boats, small, 85, 15);
 imwrite(q4_greyscaleToColor, 'results/Q4-greyscaleTocolor.bmp');
 q4_colorToGreyscale = ImPlace(lena, small_color, 85, 15);
