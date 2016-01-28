@@ -19,6 +19,7 @@ imwrite(imfilter(leaves, h), 'results/TP3/Q12_gaussian.bmp');
 
 % Question 2.1
 % ------------
+figure(1);
 dx = [1;-1];
 dy = [1,-1];
 AA_x = conv2(double(mandrill), dx, 'same');
@@ -26,7 +27,7 @@ imwrite(AA_x, 'results/TP3/Q21_AA_x.bmp');
 AA_y = conv2(double(mandrill), dy, 'same');
 imwrite(AA_y, 'results/TP3/Q21_AA_y.bmp');
 norm = sqrt(AA_x.^2 + AA_y.^2);
-imagesc(norm);
+figure(1), imagesc(norm);
 
 % Question 2.2
 % ------------
